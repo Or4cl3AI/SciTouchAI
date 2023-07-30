@@ -1,30 +1,31 @@
 ```python
-import kivy
-from kivy.app import App
-from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+from kivy.app import App
 
-class TouchScreenInputApp(App):
+class TouchScreenInput(App):
     def build(self):
-        self.user_input = TextInput(multiline=False)
-        self.user_input.bind(on_text_validate=self.on_enter)
-        self.layout = BoxLayout(orientation='vertical')
-        self.layout.add_widget(Label(text='Enter your command:'))
-        self.layout.add_widget(self.user_input)
-        return self.layout
+        layout = BoxLayout(orientation='vertical')
+        self.inputField = TextInput(hint_text='Enter your data here')
+        self.submitButton = Button(text='Submit', on_press=self.analyzeData)
+        layout.add_widget(self.inputField)
+        layout.add_widget(self.submitButton)
+        return layout
 
-    def on_enter(self, instance):
-        user_input = instance.text
-        self.processInput(user_input)
-        instance.text = ''
+    def analyzeData(self, instance):
+        userInput = self.inputField.text
+        # Call the analyzeData function from data_analysis.py
+        from data_analysis import analyzeData
+        analyzedData = analyzeData(userInput)
+        # Display the analyzed data
+        self.displayData(analyzedData)
 
-    def processInput(self, user_input):
-        # This function will process the user input and pass it to the relevant modules
-        # For now, it just prints the input to the console
-        print(f'User input: {user_input}')
+    def displayData(self, analyzedData):
+        # Call the displayData function from app.py
+        from app import displayData
+        displayData(analyzedData)
 
 if __name__ == '__main__':
-    TouchScreenInputApp().run()
+    TouchScreenInput().run()
 ```

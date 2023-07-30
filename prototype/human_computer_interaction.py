@@ -1,41 +1,56 @@
 ```python
-import json
-from flask import Flask, request
-from prototype.authentication import authenticateUser
-from prototype.touchscreen_input import processInput
+import tkinter as tk
 
-app = Flask(__name__)
+def HCI():
+    # Create a new tkinter window
+    window = tk.Tk()
+    window.title("Scientific Data Analyzer")
 
-# Shared Variables
-user_input = None
-user = None
+    # Create a new text field for user input
+    inputField = tk.Entry(window)
+    inputField.pack()
 
-# Shared Schemas
-UserSchema = {
-    "type": "object",
-    "properties": {
-        "username": {"type": "string"},
-        "password": {"type": "string"},
-    },
-    "required": ["username", "password"]
-}
+    # Create a new submit button
+    submitButton = tk.Button(window, text="Analyze", command=analyzeData)
+    submitButton.pack()
 
-@app.route('/user-input', methods=['POST'])
-def capture_user_input():
-    global user_input
-    user_input = request.json['user_input']
-    processInput(user_input)
-    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+    # Create a new display area for the analyzed data
+    dataDisplay = tk.Text(window)
+    dataDisplay.pack()
 
-@app.route('/login', methods=['POST'])
-def login():
-    global user
-    user = request.json
-    if authenticateUser(user):
-        return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+    # Create a new login button for user authentication
+    loginButton = tk.Button(window, text="Login", command=authenticateUser)
+    loginButton.pack()
+
+    # Run the tkinter event loop
+    window.mainloop()
+
+def analyzeData():
+    # Get the user input
+    userInput = inputField.get()
+
+    # Analyze the data
+    # This is a placeholder for the actual data analysis code
+    analyzedData = userInput
+
+    # Display the analyzed data
+    displayData(analyzedData)
+
+def authenticateUser():
+    # Authenticate the user
+    # This is a placeholder for the actual user authentication code
+    userAuthenticated = True
+
+    # If the user is authenticated, enable the submit button
+    if userAuthenticated:
+        submitButton.config(state="normal")
     else:
-        return json.dumps({'success':False}), 403, {'ContentType':'application/json'} 
+        submitButton.config(state="disabled")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def displayData(data):
+    # Display the data in the data display area
+    dataDisplay.insert(tk.END, data)
+
+# Run the human-computer interaction code
+HCI()
 ```

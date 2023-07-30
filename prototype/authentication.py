@@ -1,34 +1,37 @@
 ```python
 import hashlib
-from flask import Flask, request
-from flask_login import LoginManager, UserMixin, login_user
+import binascii
+import os
+from prototype.cyber_security import userDataSchema
 
-app = Flask(__name__)
-login_manager = LoginManager()
-login_manager.init_app(app)
+def authenticateUser(username, password):
+    """
+    Verify a stored password against one provided by user
+    """
+    stored_password = userDataSchema.find_one({"username": username})['password']
+    salt = stored_password[:64]
+    stored_password = stored_password[64:]
+    pwdhash = hashlib.pbkdf2_hmac('sha512', 
+                                  password.encode('utf-8'), 
+                                  salt.encode('ascii'), 
+                                  100000)
+    pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+    return pwdhash == stored_password
 
-class User(UserMixin):
-    def __init__(self, id):
-        self.id = id
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User(user_id)
-
-@app.route('/login', methods=['POST'])
 def login():
-    user_input = request.form['user_input']
-    user = UserSchema.validate(user_input)
-    if user is None:
-        return "Invalid user credentials", 401
+    """
+    Handle user login
+    """
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+    if authenticateUser(username, password):
+        print("User authenticated successfully.")
+        return True
+    else:
+        print("Authentication failed. Please try again.")
+        return False
 
-    password_hash = hashlib.sha256(user['password'].encode()).hexdigest()
-    if password_hash != user['password_hash']:
-        return "Invalid user credentials", 401
-
-    login_user(user)
-    return "Logged in successfully"
-
-if __name__ == "__main__":
-    app.run(debug=True)
+loginButton = input("Press any key to login: ")
+if loginButton:
+    login()
 ```

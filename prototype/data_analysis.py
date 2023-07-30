@@ -1,40 +1,20 @@
-```python
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
 
-# Shared variable
-data_set = None
-
-def load_data(file_path):
-    global data_set
-    data_set = pd.read_csv(file_path)
-
-def preprocess_data():
-    global data_set
-    # Remove null values
-    data_set = data_set.dropna()
+def analyzeData(dataSet):
+    # Load the dataset
+    data = pd.read_csv(dataSet)
 
     # Standardize the data
     scaler = StandardScaler()
-    data_set = pd.DataFrame(scaler.fit_transform(data_set), columns=data_set.columns)
+    data = scaler.fit_transform(data)
 
-def analyzeData():
-    global data_set
-    # Perform data analysis here
-    # This is a placeholder and should be replaced with actual data analysis code
-    print(data_set.describe())
+    # Apply PCA
+    pca = PCA(n_components=2)
+    principalComponents = pca.fit_transform(data)
 
-def update_data_display():
-    # Update the data display with the analyzed data
-    # This is a placeholder and should be replaced with actual code to update the data display
-    print("Data display updated")
+    # Convert to dataframe
+    principalDf = pd.DataFrame(data = principalComponents, columns = ['principal component 1', 'principal component 2'])
 
-def dataUpdate():
-    analyzeData()
-    update_data_display()
-
-if __name__ == "__main__":
-    load_data("path_to_your_data_file.csv")
-    preprocess_data()
-    dataUpdate()
-```
+    return principalDf

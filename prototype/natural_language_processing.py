@@ -3,28 +3,36 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-# Shared variable
-user_input = ""
+def NLP(userInput):
+    stopWords = set(stopwords.words("english"))
+    words = word_tokenize(userInput)
 
-def processInput():
-    global user_input
+    freqTable = dict()
+    for word in words:
+        word = word.lower()
+        if word in stopWords:
+            continue
+        if word in freqTable:
+            freqTable[word] += 1
+        else:
+            freqTable[word] = 1
 
-    # Tokenization of text
-    tokens = sent_tokenize(user_input)
-    for i in tokens:
-        words = nltk.word_tokenize(i)
+    sentences = sent_tokenize(userInput)
+    sentenceValue = dict()
 
-        # Removing stop words
-        new_words = [word for word in words if word.isalnum()]
+    for sentence in sentences:
+        for word, freq in freqTable.items():
+            if word in sentence.lower():
+                if sentence in sentenceValue:
+                    sentenceValue[sentence] += freq
+                else:
+                    sentenceValue[sentence] = freq
 
-        # Using a Tagger. Which is part-of-speech tagger or POS-tagger. 
-        tagged = nltk.pos_tag(new_words)
+    sumValues = 0
+    for sentence in sentenceValue:
+        sumValues += sentenceValue[sentence]
 
-        # Named entity recognition
-        namedEnt = nltk.ne_chunk(tagged)
-        namedEnt.draw()
+    average = int(sumValues / len(sentenceValue))
 
-if __name__ == "__main__":
-    user_input = input("Enter text to process: ")
-    processInput()
+    return ' '.join([sentence for sentence in sentenceValue if sentenceValue[sentence] > (1.2 * average)])
 ```

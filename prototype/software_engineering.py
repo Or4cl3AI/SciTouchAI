@@ -1,44 +1,33 @@
 ```python
 import os
-from prototype.cyber_security import encryptData, authenticateUser
+import sys
 
-class SoftwareEngineering:
-    def __init__(self):
-        self.data_set = None
-        self.user_input = None
+def softwareEngineering():
+    try:
+        # Check if all necessary files exist
+        necessary_files = ["app.py", "data_analysis.py", "machine_learning.py", "ai_module.py", "mobile_interface.py", 
+                           "responsive_design.py", "touchscreen_input.py", "human_computer_interaction.py", 
+                           "natural_language_processing.py", "cyber_security.py", "encryption.py", "authentication.py", 
+                           "aesthetics.py", "usability.py", "journalism.py", "music_theory.py", "deploy.py"]
 
-    def load_data(self, file_path):
-        if os.path.exists(file_path):
-            with open(file_path, 'r') as file:
-                self.data_set = file.read()
-        else:
-            raise FileNotFoundError(f"{file_path} does not exist.")
+        for file in necessary_files:
+            if not os.path.isfile(f"prototype/{file}"):
+                raise FileNotFoundError(f"File {file} not found. Please ensure all necessary files are in the prototype directory.")
 
-    def save_data(self, file_path):
-        with open(file_path, 'w') as file:
-            file.write(self.data_set)
+        # Check if all necessary functions exist in each file
+        necessary_functions = ["analyzeData", "authenticateUser", "encryptData", "displayData", "responsiveDesign", 
+                               "touchInput", "HCI", "NLP", "cyberSecurity", "aesthetics", "usability", "journalism", 
+                               "musicTheory", "deploy"]
 
-    def process_user_input(self, user_input):
-        self.user_input = user_input
+        for function in necessary_functions:
+            if function not in dir(sys.modules[__name__]):
+                raise NameError(f"Function {function} not found. Please ensure all necessary functions are defined.")
 
-    def apply_best_practices(self):
-        # Encrypt data
-        self.data_set = encryptData(self.data_set)
+        print("Software engineering checks passed. All necessary files and functions exist.")
 
-        # Authenticate user
-        user_status = authenticateUser(self.user_input)
-        if user_status:
-            print("User authenticated successfully.")
-        else:
-            raise Exception("User authentication failed.")
-
-    def run(self, data_file_path, user_input):
-        self.load_data(data_file_path)
-        self.process_user_input(user_input)
-        self.apply_best_practices()
-        self.save_data(data_file_path)
+    except Exception as e:
+        print(f"Software engineering check failed: {str(e)}")
 
 if __name__ == "__main__":
-    se = SoftwareEngineering()
-    se.run('data.txt', 'user_input')
+    softwareEngineering()
 ```

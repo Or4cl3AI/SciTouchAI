@@ -1,29 +1,30 @@
 ```python
 import numpy as np
-from scipy.signal import spectrogram
+from scipy.io import wavfile
 
-def applyMusicTheory(data_set):
+def musicTheory():
     """
-    Function to apply principles of music theory to enhance the user experience.
-    This function uses the principles of harmony, rhythm, and melody to create a visually stunning and engaging user experience.
+    Function to incorporate principles of music theory.
+    This function uses the principles of music theory to create a visually stunning and engaging user experience.
+    It uses the frequency of the music notes to create a unique visual pattern for each note.
     """
-    # Convert the data set into a numpy array for easier manipulation
-    data_array = np.array(data_set)
 
-    # Calculate the spectrogram of the data set
-    frequencies, times, Sxx = spectrogram(data_array)
+    # Define the frequency of each music note
+    note_frequencies = {
+        'C': 261.63,
+        'D': 293.66,
+        'E': 329.63,
+        'F': 349.23,
+        'G': 392.00,
+        'A': 440.00,
+        'B': 493.88
+    }
 
-    # Apply principles of harmony
-    harmony = np.mean(Sxx, axis=0)
+    # Create a unique visual pattern for each note
+    note_patterns = {}
+    for note, freq in note_frequencies.items():
+        pattern = np.sin(2 * np.pi * freq * np.arange(44100 * 0.5) / 44100)
+        note_patterns[note] = pattern
 
-    # Apply principles of rhythm
-    rhythm = np.std(Sxx, axis=0)
-
-    # Apply principles of melody
-    melody = np.max(Sxx, axis=0)
-
-    # Combine the harmony, rhythm, and melody to create a visually stunning and engaging user experience
-    music_theory_applied = harmony * rhythm * melody
-
-    return music_theory_applied
+    return note_patterns
 ```

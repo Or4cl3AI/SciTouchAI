@@ -1,33 +1,40 @@
 ```python
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from prototype.data_analysis import data_set
-from prototype.machine_learning import analyzeData
 
 class AIModule:
-    def __init__(self, data_set):
-        self.data_set = data_set
-        self.analyzed_data = None
+    def __init__(self, dataSet):
+        self.dataSet = dataSet
+        self.model = None
+        self.X_train = None
+        self.X_test = None
+        self.y_train = None
+        self.y_test = None
 
     def preprocess_data(self):
+        X = self.dataSet.drop('target', axis=1)
+        y = self.dataSet['target']
+
         scaler = StandardScaler()
-        self.data_set = scaler.fit_transform(self.data_set)
+        X = scaler.fit_transform(X)
 
-    def apply_pca(self):
-        pca = PCA(n_components=2)
-        self.data_set = pca.fit_transform(self.data_set)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    def analyze_data(self):
-        self.analyzed_data = analyzeData(self.data_set)
+    def train_model(self):
+        self.model = RandomForestClassifier(n_estimators=100, random_state=42)
+        self.model.fit(self.X_train, self.y_train)
 
-    def get_analyzed_data(self):
-        return self.analyzed_data
+    def evaluate_model(self):
+        predictions = self.model.predict(self.X_test)
+        accuracy = accuracy_score(self.y_test, predictions)
+        return accuracy
 
-if __name__ == "__main__":
-    ai_module = AIModule(data_set)
-    ai_module.preprocess_data()
-    ai_module.apply_pca()
-    ai_module.analyze_data()
-    print(ai_module.get_analyzed_data())
+    def analyzeData(self):
+        self.preprocess_data()
+        self.train_model()
+        accuracy = self.evaluate_model()
+        return accuracy
 ```

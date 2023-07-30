@@ -1,34 +1,33 @@
 ```python
-from prototype.human_computer_interaction import UserSchema
-from prototype.touchscreen_input import processInput
+from prototype.mobile_interface import userInput, displayData
 
-def enhanceUsability(user_input, user_schema):
+def usability():
     """
-    Function to enhance the usability of the application.
-    It uses the principles of human-computer interaction and natural language processing.
+    Function to ensure the app is user-friendly.
     """
-    # Process the user input
-    processed_input = processInput(user_input)
+    try:
+        # Check if the user input is valid
+        if not userInput:
+            raise ValueError("No input provided by the user.")
+        
+        # Check if the data display is user-friendly
+        if not displayData:
+            raise ValueError("Data display is not user-friendly.")
+        
+        # Check if the user input is easy to understand
+        if not isinstance(userInput, str):
+            raise TypeError("User input is not in a readable format.")
+        
+        # Check if the data display is easy to understand
+        if not isinstance(displayData, str):
+            raise TypeError("Data display is not in a readable format.")
+        
+        print("Usability checks passed successfully.")
+    except ValueError as ve:
+        print(f"Usability Error: {ve}")
+    except TypeError as te:
+        print(f"Usability Error: {te}")
 
-    # Validate the user input with the schema
-    is_valid = user_schema.validate(processed_input)
-
-    if is_valid:
-        # If the input is valid, return a success message
-        return {
-            "status": "success",
-            "message": "Your input was successfully processed."
-        }
-    else:
-        # If the input is not valid, return an error message
-        return {
-            "status": "error",
-            "message": "There was an error processing your input. Please try again."
-        }
-
-# Test the function
-user_input = "Analyze the data set"
-user_schema = UserSchema()
-
-print(enhanceUsability(user_input, user_schema))
+if __name__ == "__main__":
+    usability()
 ```
