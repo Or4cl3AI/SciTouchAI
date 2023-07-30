@@ -3,35 +3,30 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
-# Shared variables
-data_set = None
-user_input = None
+class DataAnalysis:
+    def __init__(self, data_set):
+        self.data_set = data_set
 
-def load_data(file_path):
-    global data_set
-    data_set = pd.read_csv(file_path)
+    def load_data(self):
+        # Load the complex scientific data set
+        self.data = pd.read_csv(self.data_set)
 
-def preprocess_data():
-    global data_set
-    # Standardize the data
-    scaler = StandardScaler()
-    data_set = scaler.fit_transform(data_set)
+    def preprocess_data(self):
+        # Preprocess the data
+        self.data.dropna(inplace=True)
+        self.data = StandardScaler().fit_transform(self.data)
 
-def analyze_data():
-    global data_set
-    # Apply PCA for dimensionality reduction
-    pca = PCA(n_components=2)
-    principalComponents = pca.fit_transform(data_set)
-    data_set = pd.DataFrame(data = principalComponents, columns = ['principal component 1', 'principal component 2'])
+    def analyze_data(self):
+        # Analyze the data using PCA
+        pca = PCA(n_components=2)
+        principalComponents = pca.fit_transform(self.data)
+        principalDf = pd.DataFrame(data = principalComponents, columns = ['principal component 1', 'principal component 2'])
+        return principalDf
 
-def save_results(file_path):
-    global data_set
-    data_set.to_csv(file_path, index=False)
-
-def run_data_analysis(input_file, output_file):
-    load_data(input_file)
-    preprocess_data()
-    analyze_data()
-    save_results(output_file)
-    print("Data_Analysis_Complete")
+if __name__ == "__main__":
+    data_analysis = DataAnalysis("data_set")
+    data_analysis.load_data()
+    data_analysis.preprocess_data()
+    analyzed_data = data_analysis.analyze_data()
+    print(analyzed_data)
 ```

@@ -1,45 +1,37 @@
 ```python
 import os
-from prototype.cyber_security import authenticate_user
 from prototype.data_analysis import analyze_data
-from prototype.machine_learning import process_input
-from prototype.ai_module import render_visualization
+from prototype.machine_learning import optimize_for_mobile
+from prototype.ai_module import create_interface
+from prototype.cyber_security import authenticate_user, encrypt_data
+from prototype.deploy import deploy_application
 
-class SoftwareEngineering:
-    def __init__(self, data_set, user_input):
-        self.data_set = data_set
-        self.user_input = user_input
+def software_engineering_pipeline(data_set, user_input):
+    # Analyze the scientific data set
+    analyzed_data = analyze_data(data_set)
 
-    def run_application(self):
-        # Authenticate user
-        user_authenticated = authenticate_user(self.user_input)
-        if not user_authenticated:
-            print("User authentication failed.")
-            return
+    # Optimize the application for mobile devices
+    optimized_data = optimize_for_mobile(analyzed_data)
 
-        # Process user input
-        processed_input = process_input(self.user_input)
-        if not processed_input:
-            print("Input processing failed.")
-            return
+    # Create the user interface
+    interface = create_interface(user_input)
 
-        # Analyze data
-        analyzed_data = analyze_data(self.data_set, processed_input)
-        if not analyzed_data:
-            print("Data analysis failed.")
-            return
+    # Authenticate the user
+    authenticated_user = authenticate_user(user_input)
 
-        # Render visualization
-        visualization = render_visualization(analyzed_data)
-        if not visualization:
-            print("Visualization rendering failed.")
-            return
+    # Encrypt sensitive data
+    encrypted_data = encrypt_data(optimized_data)
 
-        print("Application run successfully.")
+    # Deploy the application
+    deploy_application(interface, encrypted_data, authenticated_user)
 
 if __name__ == "__main__":
-    data_set = os.getenv("DATA_SET")
+    # Load the data set
+    data_set = os.getenv("DATA_SET_PATH")
+
+    # Get the user input
     user_input = os.getenv("USER_INPUT")
-    app = SoftwareEngineering(data_set, user_input)
-    app.run_application()
+
+    # Run the software engineering pipeline
+    software_engineering_pipeline(data_set, user_input)
 ```

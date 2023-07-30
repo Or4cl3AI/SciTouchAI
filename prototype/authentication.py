@@ -1,33 +1,26 @@
 ```python
-import hashlib
-import binascii
-import os
-from prototype.cyber_security import UserSchema
+import bcrypt
+from flask_login import UserMixin
+from flask_sqlalchemy import SQLAlchemy
 
-def hash_password(password):
-    """Hash a password for storing."""
-    salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
-    pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)
-    pwdhash = binascii.hexlify(pwdhash)
-    return (salt + pwdhash).decode('ascii')
+db = SQLAlchemy()
 
-def verify_password(stored_password, provided_password):
-    """Verify a stored password against one provided by user"""
-    salt = stored_password[:64]
-    stored_password = stored_password[64:]
-    pwdhash = hashlib.pbkdf2_hmac('sha512', provided_password.encode('utf-8'), salt.encode('ascii'), 100000)
-    pwdhash = binascii.hexlify(pwdhash).decode('ascii')
-    return pwdhash == stored_password
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
 
-def authenticate_user(user_input):
-    user_data = UserSchema.load(user_input)
-    stored_password = user_data.password
-    provided_password = user_input.get('password')
+    def set_password(self, password):
+        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-    if verify_password(stored_password, provided_password):
-        print("User_Authenticated")
+    def check_password(self, password):
+        return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
+
+def authenticate_user(username, password):
+    user = User.query.filter_by(username=username).first()
+    if user and user.check_password(password):
+        authenticated_user = user
         return True
     else:
-        print("Authentication failed")
         return False
 ```

@@ -1,38 +1,43 @@
-```python
 import tkinter as tk
-from tkinter import messagebox
-from prototype import human_computer_interaction, touchscreen_input
+from tkinter import ttk
 
-class Usability:
-    def __init__(self, root):
-        self.root = root
-        self.root.title('Scientific Data Analysis')
-        self.root.geometry('500x500')
+def create_interface():
+    root = tk.Tk()
+    root.title("Scientific Data Analyzer")
 
-        self.user_input_field = tk.Entry(self.root, textvariable=user_input)
-        self.user_input_field.pack()
+    # Create a frame for the data display
+    data_display = ttk.Frame(root, padding="10")
+    data_display.grid(row=0, column=0, sticky=(tk.W, tk.E))
 
-        self.submit_button = tk.Button(self.root, text="Submit", command=self.process_input)
-        self.submit_button.pack()
+    # Create a frame for the input field
+    input_field = ttk.Frame(root, padding="10")
+    input_field.grid(row=1, column=0, sticky=(tk.W, tk.E))
 
-        self.data_display = tk.Label(self.root, text="")
-        self.data_display.pack()
+    # Create a frame for the login button
+    login_button = ttk.Frame(root, padding="10")
+    login_button.grid(row=2, column=0, sticky=(tk.W, tk.E))
 
-    def process_input(self):
-        input_data = self.user_input_field.get()
-        if not input_data:
-            messagebox.showerror("Error", "Input field is empty")
-            return
+    # Create a frame for the encryption toggle
+    encryption_toggle = ttk.Frame(root, padding="10")
+    encryption_toggle.grid(row=3, column=0, sticky=(tk.W, tk.E))
 
-        try:
-            processed_data = human_computer_interaction.process_input(input_data)
-            touchscreen_input.capture_input(processed_data)
-            self.data_display.config(text=processed_data)
-        except Exception as e:
-            messagebox.showerror("Error", str(e))
+    # Create a text widget for displaying data
+    data_text = tk.Text(data_display, width=50, height=10)
+    data_text.pack()
+
+    # Create an entry widget for user input
+    user_entry = ttk.Entry(input_field, width=50)
+    user_entry.pack()
+
+    # Create a button for user login
+    login_btn = ttk.Button(login_button, text="Login")
+    login_btn.pack()
+
+    # Create a checkbutton for encryption toggle
+    encryption_check = ttk.Checkbutton(encryption_toggle, text="Enable Encryption")
+    encryption_check.pack()
+
+    root.mainloop()
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = Usability(root)
-    root.mainloop()
-```
+    create_interface()

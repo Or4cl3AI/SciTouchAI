@@ -7,38 +7,40 @@ from prototype.data_analysis import data_set
 class AIModule:
     def __init__(self):
         self.model = None
-        self.data = data_set
+        self.data_set = data_set
 
     def preprocess_data(self):
-        # Preprocessing steps will be added here based on the data_set
-        pass
+        # Split the data into training and testing sets
+        train_data, test_data = train_test_split(self.data_set, test_size=0.2)
+        return train_data, test_data
 
     def build_model(self):
-        # Define the model architecture
+        # Build a neural network model
         self.model = keras.Sequential([
-            keras.layers.Dense(64, activation='relu', input_shape=[len(self.data.keys())]),
+            keras.layers.Dense(64, activation='relu', input_shape=[len(self.data_set.keys())]),
             keras.layers.Dense(64, activation='relu'),
             keras.layers.Dense(1)
         ])
 
-        # Compile the model
-        self.model.compile(loss='mean_squared_error',
-                    optimizer=tf.keras.optimizers.RMSprop(0.001),
-                    metrics=['mean_absolute_error', 'mean_squared_error'])
+        optimizer = tf.keras.optimizers.RMSprop(0.001)
 
-    def train_model(self):
-        # Split the data into train and test
-        train_dataset, test_dataset = train_test_split(self.data, test_size=0.2)
+        self.model.compile(loss='mse',
+                           optimizer=optimizer,
+                           metrics=['mae', 'mse'])
+        return self.model
 
+    def train_model(self, train_data, test_data):
         # Train the model
-        self.model.fit(train_dataset, epochs=10)
+        history = self.model.fit(train_data, test_data, epochs=10, validation_split = 0.2, verbose=0)
+        return history
 
     def predict(self, input_data):
         # Use the trained model to make predictions
-        return self.model.predict(input_data)
+        predictions = self.model.predict(input_data)
+        return predictions
 
 ai_module = AIModule()
-ai_module.preprocess_data()
+train_data, test_data = ai_module.preprocess_data()
 ai_module.build_model()
-ai_module.train_model()
+ai_module.train_model(train_data, test_data)
 ```

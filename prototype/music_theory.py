@@ -1,24 +1,32 @@
 ```python
 import numpy as np
-from scipy.signal import spectrogram
-from matplotlib import pyplot as plt
+from scipy.io import wavfile
+from sklearn.preprocessing import MinMaxScaler
 
-def generate_spectrogram(data_set):
-    frequencies, times, Sxx = spectrogram(data_set, fs=1.0)
-    plt.pcolormesh(times, frequencies, 10 * np.log10(Sxx), shading='gouraud')
-    plt.ylabel('Frequency [Hz]')
-    plt.xlabel('Time [sec]')
-    plt.show()
+def generate_music_pattern(user_input):
+    """
+    Function to generate a music pattern based on user input.
+    This function uses principles of music theory to create a unique and engaging user experience.
+    """
+    # Convert user input to a numpy array
+    user_input_array = np.array(list(user_input))
 
-def apply_music_theory(data_set):
-    # Apply music theory principles to data set
-    # This is a placeholder function and should be replaced with actual implementation
-    pass
+    # Normalize the user input array
+    scaler = MinMaxScaler(feature_range=(20, 20000))  # Human audible range
+    normalized_input = scaler.fit_transform(user_input_array.reshape(-1, 1))
 
-def render_visualization(data_set):
-    # Generate spectrogram
-    generate_spectrogram(data_set)
+    # Generate a sine wave pattern based on the normalized input
+    sample_rate = 44100  # Standard sample rate for music
+    duration = 2.0  # Duration of the pattern in seconds
+    t = np.linspace(0, duration, int(sample_rate * duration), False)
+    note = np.sin(normalized_input * t * 2 * np.pi)
 
-    # Apply music theory
-    apply_music_theory(data_set)
+    # Ensure that highest value is in 16-bit range
+    audio = note * (2**15 - 1) / np.max(np.abs(note))
+    audio = audio.astype(np.int16)
+
+    # Output the audio file
+    wavfile.write('prototype/music_pattern.wav', sample_rate, audio)
+
+    return 'prototype/music_pattern.wav'
 ```

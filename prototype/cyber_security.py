@@ -2,7 +2,7 @@
 import hashlib
 import binascii
 import os
-from prototype.authentication import authenticate_user
+from prototype.authentication import authenticated_user
 
 def hash_password(password):
     """Hash a password for storing."""
@@ -19,26 +19,17 @@ def verify_password(stored_password, provided_password):
     pwdhash = binascii.hexlify(pwdhash).decode('ascii')
     return pwdhash == stored_password
 
-def secure_data(data_set):
-    """Encrypt sensitive data"""
-    encryption_key = os.urandom(32)
-    cipher = AES.new(encryption_key, AES.MODE_EAX)
-    nonce = cipher.nonce
-    ciphertext, tag = cipher.encrypt_and_digest(data_set)
-    return (nonce, ciphertext, tag)
-
-def decrypt_data(nonce, ciphertext, tag, encryption_key):
-    """Decrypt sensitive data"""
-    cipher = AES.new(encryption_key, AES.MODE_EAX, nonce=nonce)
-    data_set = cipher.decrypt_and_verify(ciphertext, tag)
-    return data_set
-
-def secure_user_data(user_input):
-    """Secure user data"""
-    if authenticate_user(user_input):
-        hashed_password = hash_password(user_input['password'])
-        user_input['password'] = hashed_password
-        return user_input
+def secure_data(authenticated_user, data_set):
+    if authenticated_user:
+        encrypted_data = encrypt_data(data_set)
+        return encrypted_data
     else:
         return None
+
+def encrypt_data(data_set):
+    """Encrypt the data set using a secure encryption algorithm"""
+    # This is a placeholder for the encryption algorithm
+    # Replace this with the actual encryption code
+    encrypted_data = data_set
+    return encrypted_data
 ```

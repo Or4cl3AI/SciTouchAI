@@ -7,27 +7,21 @@ class Journalism:
         self.data_set = data_set
 
     def create_story(self):
-        story = {}
-        for data in self.data_set:
-            story[data['name']] = self.analyze_data(data)
+        # Convert the data set into a JSON object
+        data_json = json.dumps(self.data_set)
+
+        # Create a story based on the data set
+        story = "The latest analysis of the scientific data set reveals: " + data_json
+
         return story
 
-    def analyze_data(self, data):
-        analysis = {}
-        analysis['title'] = self.create_title(data)
-        analysis['content'] = self.create_content(data)
-        return analysis
-
-    def create_title(self, data):
-        return f"Analysis of {data['name']}"
-
-    def create_content(self, data):
-        content = f"The data set {data['name']} has {len(data['values'])} values. "
-        content += f"The average value is {sum(data['values'])/len(data['values'])}. "
-        content += f"The maximum value is {max(data['values'])}. "
-        content += f"The minimum value is {min(data['values'])}. "
-        return content
+    def display_story(self, story):
+        # Display the story in a user-friendly format
+        print("\n\n--- Story Based on Data Analysis ---\n")
+        print(story)
+        print("\n-----------------------------------\n")
 
 journalism = Journalism()
-print(json.dumps(journalism.create_story(), indent=4))
+story = journalism.create_story()
+journalism.display_story(story)
 ```
