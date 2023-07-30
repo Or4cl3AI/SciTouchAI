@@ -1,31 +1,25 @@
 ```python
+import kivy
+from kivy.app import App
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
-from kivy.app import App
 
-class TouchScreenInput(App):
+class TouchScreenInputApp(App):
     def build(self):
         layout = BoxLayout(orientation='vertical')
-        self.inputField = TextInput(hint_text='Enter your data here')
-        self.submitButton = Button(text='Submit', on_press=self.analyzeData)
-        layout.add_widget(self.inputField)
-        layout.add_widget(self.submitButton)
+        self.user_input = TextInput(hint_text='Enter your input here', multiline=False)
+        submit_button = Button(text='Submit', on_release=self.process_input)
+        layout.add_widget(self.user_input)
+        layout.add_widget(submit_button)
         return layout
 
-    def analyzeData(self, instance):
-        userInput = self.inputField.text
-        # Call the analyzeData function from data_analysis.py
-        from data_analysis import analyzeData
-        analyzedData = analyzeData(userInput)
-        # Display the analyzed data
-        self.displayData(analyzedData)
-
-    def displayData(self, analyzedData):
-        # Call the displayData function from app.py
-        from app import displayData
-        displayData(analyzedData)
+    def process_input(self, instance):
+        user_input = self.user_input.text
+        # Here we would call the function process_input() from the human_computer_interaction.py module
+        # process_input(user_input)
+        self.user_input.text = ''
 
 if __name__ == '__main__':
-    TouchScreenInput().run()
+    TouchScreenInputApp().run()
 ```

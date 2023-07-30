@@ -1,56 +1,47 @@
 ```python
 import tkinter as tk
+from tkinter import messagebox
+from prototype import data_analysis, machine_learning, ai_module, natural_language_processing
 
-def HCI():
-    # Create a new tkinter window
-    window = tk.Tk()
-    window.title("Scientific Data Analyzer")
+class Application(tk.Tk):
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+        self.title("Scientific Data Analysis App")
+        self.geometry("500x500")
 
-    # Create a new text field for user input
-    inputField = tk.Entry(window)
-    inputField.pack()
+        self.data_set = None
+        self.user_input = None
 
-    # Create a new submit button
-    submitButton = tk.Button(window, text="Analyze", command=analyzeData)
-    submitButton.pack()
+        self.create_widgets()
 
-    # Create a new display area for the analyzed data
-    dataDisplay = tk.Text(window)
-    dataDisplay.pack()
+    def create_widgets(self):
+        self.input_label = tk.Label(self, text="Enter your query:")
+        self.input_label.pack()
 
-    # Create a new login button for user authentication
-    loginButton = tk.Button(window, text="Login", command=authenticateUser)
-    loginButton.pack()
+        self.user_input_field = tk.Entry(self)
+        self.user_input_field.pack()
 
-    # Run the tkinter event loop
-    window.mainloop()
+        self.submit_button = tk.Button(self, text="Submit", command=self.process_input)
+        self.submit_button.pack()
 
-def analyzeData():
-    # Get the user input
-    userInput = inputField.get()
+        self.data_display = tk.Label(self, text="")
+        self.data_display.pack()
 
-    # Analyze the data
-    # This is a placeholder for the actual data analysis code
-    analyzedData = userInput
+    def process_input(self):
+        self.user_input = self.user_input_field.get()
+        if self.user_input:
+            self.data_set = data_analysis.analyze_data(self.user_input)
+            machine_learning.analyze_data(self.data_set)
+            ai_module.analyze_data(self.data_set)
+            natural_language_processing.analyze_data(self.data_set)
+            self.data_display.config(text=str(self.data_set))
+        else:
+            messagebox.showerror("Error", "Input field is empty")
 
-    # Display the analyzed data
-    displayData(analyzedData)
+    def run(self):
+        self.mainloop()
 
-def authenticateUser():
-    # Authenticate the user
-    # This is a placeholder for the actual user authentication code
-    userAuthenticated = True
-
-    # If the user is authenticated, enable the submit button
-    if userAuthenticated:
-        submitButton.config(state="normal")
-    else:
-        submitButton.config(state="disabled")
-
-def displayData(data):
-    # Display the data in the data display area
-    dataDisplay.insert(tk.END, data)
-
-# Run the human-computer interaction code
-HCI()
+if __name__ == "__main__":
+    app = Application()
+    app.run()
 ```

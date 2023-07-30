@@ -1,33 +1,38 @@
 ```python
-from prototype.mobile_interface import userInput, displayData
+import tkinter as tk
+from tkinter import messagebox
+from prototype import human_computer_interaction, touchscreen_input
 
-def usability():
-    """
-    Function to ensure the app is user-friendly.
-    """
-    try:
-        # Check if the user input is valid
-        if not userInput:
-            raise ValueError("No input provided by the user.")
-        
-        # Check if the data display is user-friendly
-        if not displayData:
-            raise ValueError("Data display is not user-friendly.")
-        
-        # Check if the user input is easy to understand
-        if not isinstance(userInput, str):
-            raise TypeError("User input is not in a readable format.")
-        
-        # Check if the data display is easy to understand
-        if not isinstance(displayData, str):
-            raise TypeError("Data display is not in a readable format.")
-        
-        print("Usability checks passed successfully.")
-    except ValueError as ve:
-        print(f"Usability Error: {ve}")
-    except TypeError as te:
-        print(f"Usability Error: {te}")
+class Usability:
+    def __init__(self, root):
+        self.root = root
+        self.root.title('Scientific Data Analysis')
+        self.root.geometry('500x500')
+
+        self.user_input_field = tk.Entry(self.root, textvariable=user_input)
+        self.user_input_field.pack()
+
+        self.submit_button = tk.Button(self.root, text="Submit", command=self.process_input)
+        self.submit_button.pack()
+
+        self.data_display = tk.Label(self.root, text="")
+        self.data_display.pack()
+
+    def process_input(self):
+        input_data = self.user_input_field.get()
+        if not input_data:
+            messagebox.showerror("Error", "Input field is empty")
+            return
+
+        try:
+            processed_data = human_computer_interaction.process_input(input_data)
+            touchscreen_input.capture_input(processed_data)
+            self.data_display.config(text=processed_data)
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
 if __name__ == "__main__":
-    usability()
+    root = tk.Tk()
+    app = Usability(root)
+    root.mainloop()
 ```

@@ -1,40 +1,44 @@
 ```python
-import numpy as np
+import tensorflow as tf
+from tensorflow import keras
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import StandardScaler
+from prototype.data_analysis import data_set
 
 class AIModule:
-    def __init__(self, dataSet):
-        self.dataSet = dataSet
+    def __init__(self):
         self.model = None
-        self.X_train = None
-        self.X_test = None
-        self.y_train = None
-        self.y_test = None
+        self.data = data_set
 
     def preprocess_data(self):
-        X = self.dataSet.drop('target', axis=1)
-        y = self.dataSet['target']
+        # Preprocessing steps will be added here based on the data_set
+        pass
 
-        scaler = StandardScaler()
-        X = scaler.fit_transform(X)
+    def build_model(self):
+        # Define the model architecture
+        self.model = keras.Sequential([
+            keras.layers.Dense(64, activation='relu', input_shape=[len(self.data.keys())]),
+            keras.layers.Dense(64, activation='relu'),
+            keras.layers.Dense(1)
+        ])
 
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        # Compile the model
+        self.model.compile(loss='mean_squared_error',
+                    optimizer=tf.keras.optimizers.RMSprop(0.001),
+                    metrics=['mean_absolute_error', 'mean_squared_error'])
 
     def train_model(self):
-        self.model = RandomForestClassifier(n_estimators=100, random_state=42)
-        self.model.fit(self.X_train, self.y_train)
+        # Split the data into train and test
+        train_dataset, test_dataset = train_test_split(self.data, test_size=0.2)
 
-    def evaluate_model(self):
-        predictions = self.model.predict(self.X_test)
-        accuracy = accuracy_score(self.y_test, predictions)
-        return accuracy
+        # Train the model
+        self.model.fit(train_dataset, epochs=10)
 
-    def analyzeData(self):
-        self.preprocess_data()
-        self.train_model()
-        accuracy = self.evaluate_model()
-        return accuracy
+    def predict(self, input_data):
+        # Use the trained model to make predictions
+        return self.model.predict(input_data)
+
+ai_module = AIModule()
+ai_module.preprocess_data()
+ai_module.build_model()
+ai_module.train_model()
 ```

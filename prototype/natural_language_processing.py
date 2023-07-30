@@ -1,38 +1,38 @@
-```python
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-def NLP(userInput):
-    stopWords = set(stopwords.words("english"))
-    words = word_tokenize(userInput)
+# Shared variables
+data_set = None
+user_input = None
 
-    freqTable = dict()
-    for word in words:
-        word = word.lower()
-        if word in stopWords:
-            continue
-        if word in freqTable:
-            freqTable[word] += 1
-        else:
-            freqTable[word] = 1
+def process_input(user_input):
+    """
+    Function to process user input using natural language processing techniques
+    """
+    stop_words = set(stopwords.words('english'))
+    tokenized = sent_tokenize(user_input)
+    for i in tokenized:
+        wordsList = nltk.word_tokenize(i)
+        wordsList = [w for w in wordsList if not w in stop_words]
+        tagged = nltk.pos_tag(wordsList)
+    return tagged
 
-    sentences = sent_tokenize(userInput)
-    sentenceValue = dict()
+def analyze_data(data_set):
+    """
+    Function to analyze data using natural language processing techniques
+    """
+    stop_words = set(stopwords.words('english'))
+    tokenized = sent_tokenize(data_set)
+    for i in tokenized:
+        wordsList = nltk.word_tokenize(i)
+        wordsList = [w for w in wordsList if not w in stop_words]
+        tagged = nltk.pos_tag(wordsList)
+    return tagged
 
-    for sentence in sentences:
-        for word, freq in freqTable.items():
-            if word in sentence.lower():
-                if sentence in sentenceValue:
-                    sentenceValue[sentence] += freq
-                else:
-                    sentenceValue[sentence] = freq
-
-    sumValues = 0
-    for sentence in sentenceValue:
-        sumValues += sentenceValue[sentence]
-
-    average = int(sumValues / len(sentenceValue))
-
-    return ' '.join([sentence for sentence in sentenceValue if sentenceValue[sentence] > (1.2 * average)])
-```
+def render_visualization(tagged_data):
+    """
+    Function to render visualization of analyzed data
+    """
+    entities = nltk.chunk.ne_chunk(tagged_data)
+    entities.draw()

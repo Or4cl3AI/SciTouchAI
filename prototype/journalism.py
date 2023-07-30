@@ -1,25 +1,33 @@
 ```python
 import json
+from prototype.data_analysis import data_set
 
-def journalism():
-    """
-    This function incorporates principles of journalism into the application.
-    It ensures that the data is presented in a clear, concise, and engaging manner.
-    """
-    with open('dataSet.json', 'r') as file:
-        dataSet = json.load(file)
+class Journalism:
+    def __init__(self):
+        self.data_set = data_set
 
-    # Sort data by relevance
-    dataSet.sort(key=lambda x: x['relevance'], reverse=True)
+    def create_story(self):
+        story = {}
+        for data in self.data_set:
+            story[data['name']] = self.analyze_data(data)
+        return story
 
-    # Create headlines for top 5 most relevant data
-    headlines = [f"Top {i+1}: {data['title']}" for i, data in enumerate(dataSet[:5])]
+    def analyze_data(self, data):
+        analysis = {}
+        analysis['title'] = self.create_title(data)
+        analysis['content'] = self.create_content(data)
+        return analysis
 
-    # Create a summary for each headline
-    summaries = [f"{data['summary'][:100]}..." for data in dataSet[:5]]
+    def create_title(self, data):
+        return f"Analysis of {data['name']}"
 
-    # Combine headlines and summaries
-    journalism_output = "\n".join([f"{headline}\n{summary}" for headline, summary in zip(headlines, summaries)])
+    def create_content(self, data):
+        content = f"The data set {data['name']} has {len(data['values'])} values. "
+        content += f"The average value is {sum(data['values'])/len(data['values'])}. "
+        content += f"The maximum value is {max(data['values'])}. "
+        content += f"The minimum value is {min(data['values'])}. "
+        return content
 
-    return journalism_output
+journalism = Journalism()
+print(json.dumps(journalism.create_story(), indent=4))
 ```

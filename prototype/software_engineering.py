@@ -1,33 +1,45 @@
 ```python
 import os
-import sys
+from prototype.cyber_security import authenticate_user
+from prototype.data_analysis import analyze_data
+from prototype.machine_learning import process_input
+from prototype.ai_module import render_visualization
 
-def softwareEngineering():
-    try:
-        # Check if all necessary files exist
-        necessary_files = ["app.py", "data_analysis.py", "machine_learning.py", "ai_module.py", "mobile_interface.py", 
-                           "responsive_design.py", "touchscreen_input.py", "human_computer_interaction.py", 
-                           "natural_language_processing.py", "cyber_security.py", "encryption.py", "authentication.py", 
-                           "aesthetics.py", "usability.py", "journalism.py", "music_theory.py", "deploy.py"]
+class SoftwareEngineering:
+    def __init__(self, data_set, user_input):
+        self.data_set = data_set
+        self.user_input = user_input
 
-        for file in necessary_files:
-            if not os.path.isfile(f"prototype/{file}"):
-                raise FileNotFoundError(f"File {file} not found. Please ensure all necessary files are in the prototype directory.")
+    def run_application(self):
+        # Authenticate user
+        user_authenticated = authenticate_user(self.user_input)
+        if not user_authenticated:
+            print("User authentication failed.")
+            return
 
-        # Check if all necessary functions exist in each file
-        necessary_functions = ["analyzeData", "authenticateUser", "encryptData", "displayData", "responsiveDesign", 
-                               "touchInput", "HCI", "NLP", "cyberSecurity", "aesthetics", "usability", "journalism", 
-                               "musicTheory", "deploy"]
+        # Process user input
+        processed_input = process_input(self.user_input)
+        if not processed_input:
+            print("Input processing failed.")
+            return
 
-        for function in necessary_functions:
-            if function not in dir(sys.modules[__name__]):
-                raise NameError(f"Function {function} not found. Please ensure all necessary functions are defined.")
+        # Analyze data
+        analyzed_data = analyze_data(self.data_set, processed_input)
+        if not analyzed_data:
+            print("Data analysis failed.")
+            return
 
-        print("Software engineering checks passed. All necessary files and functions exist.")
+        # Render visualization
+        visualization = render_visualization(analyzed_data)
+        if not visualization:
+            print("Visualization rendering failed.")
+            return
 
-    except Exception as e:
-        print(f"Software engineering check failed: {str(e)}")
+        print("Application run successfully.")
 
 if __name__ == "__main__":
-    softwareEngineering()
+    data_set = os.getenv("DATA_SET")
+    user_input = os.getenv("USER_INPUT")
+    app = SoftwareEngineering(data_set, user_input)
+    app.run_application()
 ```
