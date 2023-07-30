@@ -3,41 +3,49 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
 
-class MachineLearningModule:
-    def __init__(self, data_set):
-        self.data_set = data_set
-        self.model = None
-        self.X_train = None
-        self.X_test = None
-        self.y_train = None
-        self.y_test = None
+# Load the dataset
+def load_data(dataSet):
+    data = pd.read_csv(dataSet)
+    return data
 
-    def preprocess_data(self):
-        # Assuming the last column of the dataset is the target variable
-        X = self.data_set.iloc[:, :-1]
-        y = self.data_set.iloc[:, -1]
+# Preprocess the data
+def preprocess_data(data):
+    X = data.drop('target', axis=1)
+    y = data['target']
+    
+    # Standardize the features
+    scaler = StandardScaler()
+    X = scaler.fit_transform(X)
+    
+    return X, y
 
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Split the data into training and testing sets
+def split_data(X, y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    return X_train, X_test, y_train, y_test
 
-    def train_model(self):
-        self.model = RandomForestClassifier()
-        self.model.fit(self.X_train, self.y_train)
+# Train the model
+def train_model(X_train, y_train):
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+    return model
 
-    def evaluate_model(self):
-        predictions = self.model.predict(self.X_test)
-        accuracy = accuracy_score(self.y_test, predictions)
-        return accuracy
+# Evaluate the model
+def evaluate_model(model, X_test, y_test):
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    return accuracy
 
-    def analyze_data(self):
-        self.preprocess_data()
-        self.train_model()
-        accuracy = self.evaluate_model()
-        return accuracy
-
-if __name__ == "__main__":
-    data_set = pd.read_csv('data_set.csv')
-    ml_module = MachineLearningModule(data_set)
-    accuracy = ml_module.analyze_data()
-    print(f"Model Accuracy: {accuracy}")
+# Main function to process the data
+def processData(dataSet):
+    data = load_data(dataSet)
+    X, y = preprocess_data(data)
+    X_train, X_test, y_train, y_test = split_data(X, y)
+    model = train_model(X_train, y_train)
+    accuracy = evaluate_model(model, X_test, y_test)
+    
+    print(f'Model Accuracy: {accuracy}')
+    return model
 ```

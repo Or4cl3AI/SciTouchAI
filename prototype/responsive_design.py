@@ -1,19 +1,31 @@
 ```python
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
+import os
+from flask import Flask, render_template, request
+from prototype.touchscreen_input import TouchScreenInput
 
 app = Flask(__name__)
-Bootstrap(app)
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-def optimize_for_mobile():
-    # Use Flask-Bootstrap to ensure that the app is mobile responsive
-    # The 'index.html' file should be designed with Bootstrap classes for responsiveness
-    pass
+class ResponsiveDesign:
+    def __init__(self):
+        self.touchScreenInput = TouchScreenInput()
+
+    def renderUI(self):
+        screenWidth = self.touchScreenInput.getScreenWidth()
+        screenHeight = self.touchScreenInput.getScreenHeight()
+
+        if screenWidth < 600:
+            return render_template('mobile.html')
+        elif screenWidth < 1200:
+            return render_template('tablet.html')
+        else:
+            return render_template('desktop.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    rd = ResponsiveDesign()
+    rd.renderUI()
+    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
 ```

@@ -3,30 +3,30 @@ import numpy as np
 from scipy.io import wavfile
 from sklearn.preprocessing import MinMaxScaler
 
-def generate_music_pattern(user_input):
-    """
-    Function to generate a music pattern based on user input.
-    This function uses principles of music theory to create a unique and engaging user experience.
-    """
-    # Convert user input to a numpy array
-    user_input_array = np.array(list(user_input))
+# Shared variables
+dataSet = None
+displayArea = None
 
-    # Normalize the user input array
-    scaler = MinMaxScaler(feature_range=(20, 20000))  # Human audible range
-    normalized_input = scaler.fit_transform(user_input_array.reshape(-1, 1))
+def generate_music(data, sample_rate=44100, duration=1):
+    """Generate music based on the data."""
+    scaler = MinMaxScaler(feature_range=(-1, 1))
+    data = scaler.fit_transform(data.reshape(-1, 1))
+    music = np.sin(2 * np.pi * sample_rate * data * duration)
+    return music
 
-    # Generate a sine wave pattern based on the normalized input
-    sample_rate = 44100  # Standard sample rate for music
-    duration = 2.0  # Duration of the pattern in seconds
-    t = np.linspace(0, duration, int(sample_rate * duration), False)
-    note = np.sin(normalized_input * t * 2 * np.pi)
+def save_music(music, filename, sample_rate=44100):
+    """Save the generated music to a WAV file."""
+    wavfile.write(filename, sample_rate, music)
 
-    # Ensure that highest value is in 16-bit range
-    audio = note * (2**15 - 1) / np.max(np.abs(note))
-    audio = audio.astype(np.int16)
+def render_music_visualization(music):
+    """Render a visualization of the music in the display area."""
+    # This is a placeholder. The actual implementation will depend on the specific UI library used.
+    pass
 
-    # Output the audio file
-    wavfile.write('prototype/music_pattern.wav', sample_rate, audio)
-
-    return 'prototype/music_pattern.wav'
+def renderUI():
+    """Render the music theory UI."""
+    global dataSet, displayArea
+    music = generate_music(dataSet)
+    save_music(music, 'music.wav')
+    render_music_visualization(music)
 ```

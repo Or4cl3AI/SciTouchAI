@@ -1,32 +1,34 @@
 ```python
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
 
-class DataAnalysis:
-    def __init__(self, data_set):
-        self.data_set = data_set
+# Shared variable
+dataSet = None
 
-    def load_data(self):
-        # Load the complex scientific data set
-        self.data = pd.read_csv(self.data_set)
+# Shared schema
+dataSetSchema = None
 
-    def preprocess_data(self):
-        # Preprocess the data
-        self.data.dropna(inplace=True)
-        self.data = StandardScaler().fit_transform(self.data)
+def load_data(file_path):
+    global dataSet
+    dataSet = pd.read_csv(file_path)
+    validate_data()
 
-    def analyze_data(self):
-        # Analyze the data using PCA
-        pca = PCA(n_components=2)
-        principalComponents = pca.fit_transform(self.data)
-        principalDf = pd.DataFrame(data = principalComponents, columns = ['principal component 1', 'principal component 2'])
-        return principalDf
+def validate_data():
+    global dataSetSchema
+    if dataSetSchema is not None:
+        assert set(dataSet.columns) == set(dataSetSchema), "Data does not match the schema"
+
+def preprocess_data():
+    global dataSet
+    scaler = StandardScaler()
+    dataSet = pd.DataFrame(scaler.fit_transform(dataSet), columns=dataSet.columns)
+
+def processData():
+    load_data('path_to_your_data.csv')
+    preprocess_data()
+    print("Data processed successfully")
+    return "dataProcessed"
 
 if __name__ == "__main__":
-    data_analysis = DataAnalysis("data_set")
-    data_analysis.load_data()
-    data_analysis.preprocess_data()
-    analyzed_data = data_analysis.analyze_data()
-    print(analyzed_data)
+    processData()
 ```

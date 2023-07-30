@@ -1,49 +1,49 @@
 ```python
-import flask
-from flask import request, jsonify
-from prototype import data_analysis, machine_learning, ai_module, responsive_design, touchscreen_input, human_computer_interaction, natural_language_processing, software_engineering, cyber_security, encryption, authentication, aesthetics, usability, journalism, music_theory, deploy
+from flask import Flask, request, jsonify
+import prototype.data_analysis as data_analysis
+import prototype.machine_learning as machine_learning
+import prototype.artificial_intelligence as artificial_intelligence
+import prototype.responsive_design as responsive_design
+import prototype.touchscreen_input as touchscreen_input
+import prototype.human_computer_interaction as human_computer_interaction
+import prototype.natural_language_processing as natural_language_processing
+import prototype.software_engineering as software_engineering
+import prototype.cyber_security as cyber_security
+import prototype.encryption as encryption
+import prototype.authentication as authentication
+import prototype.aesthetics as aesthetics
+import prototype.usability as usability
+import prototype.journalism as journalism
+import prototype.music_theory as music_theory
 
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def home():
-    return "<h1>Welcome to our cutting-edge mobile application!</h1>"
+@app.route('/processData', methods=['POST'])
+def process_data():
+    dataSet = request.json['dataSet']
+    processedData = data_analysis.processData(dataSet)
+    processedData = machine_learning.processData(processedData)
+    processedData = artificial_intelligence.processData(processedData)
+    return jsonify(processedData)
 
-@app.route('/analyze_data', methods=['POST'])
-def analyze():
-    data_set = request.get_json()
-    analyzed_data = data_analysis.analyze_data(data_set)
-    return jsonify(analyzed_data)
+@app.route('/authenticateUser', methods=['POST'])
+def authenticate_user():
+    userInput = request.json['userInput']
+    userData = software_engineering.processData(userInput)
+    userData = cyber_security.processData(userData)
+    userData = encryption.processData(userData)
+    authResult = authentication.authenticateUser(userData)
+    return jsonify(authResult)
 
-@app.route('/optimize_for_mobile', methods=['GET'])
-def optimize():
-    responsive_design.optimize_for_mobile()
-    return "Application optimized for mobile devices."
-
-@app.route('/authenticate_user', methods=['POST'])
-def authenticate():
-    user_data = request.get_json()
-    authenticated_user = authentication.authenticate_user(user_data)
-    return jsonify(authenticated_user)
-
-@app.route('/encrypt_data', methods=['POST'])
-def encrypt():
-    data = request.get_json()
-    encrypted_data = encryption.encrypt_data(data)
-    return jsonify(encrypted_data)
-
-@app.route('/create_interface', methods=['GET'])
-def create_interface():
-    human_computer_interaction.create_interface()
-    natural_language_processing.create_interface()
-    return "Interface created."
-
-@app.route('/deploy_application', methods=['GET'])
-def deploy_application():
-    deploy.deploy_application()
-    return "Application deployed."
+@app.route('/renderUI', methods=['GET'])
+def render_ui():
+    displayArea = responsive_design.renderUI()
+    displayArea = aesthetics.renderUI(displayArea)
+    displayArea = usability.renderUI(displayArea)
+    displayArea = journalism.renderUI(displayArea)
+    displayArea = music_theory.renderUI(displayArea)
+    return jsonify(displayArea)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 ```

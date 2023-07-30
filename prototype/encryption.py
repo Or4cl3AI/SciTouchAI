@@ -7,18 +7,10 @@ class EncryptionModule:
         self.cipher_suite = Fernet(self.key)
 
     def encrypt_data(self, data):
-        encrypted_data = self.cipher_suite.encrypt(data)
-        return encrypted_data
+        cipher_text = self.cipher_suite.encrypt(data)
+        return cipher_text
 
-    def decrypt_data(self, encrypted_data):
-        decrypted_data = self.cipher_suite.decrypt(encrypted_data)
-        return decrypted_data
-
-if __name__ == "__main__":
-    encryption_module = EncryptionModule()
-    data = b"Sensitive data that needs to be encrypted"
-    encrypted_data = encryption_module.encrypt_data(data)
-    print("Encrypted data: ", encrypted_data)
-    decrypted_data = encryption_module.decrypt_data(encrypted_data)
-    print("Decrypted data: ", decrypted_data)
+    def decrypt_data(self, cipher_text):
+        plain_text = self.cipher_suite.decrypt(cipher_text)
+        return plain_text
 ```

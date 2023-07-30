@@ -1,43 +1,71 @@
 import tkinter as tk
-from tkinter import ttk
 
-def create_interface():
-    root = tk.Tk()
-    root.title("Scientific Data Analyzer")
+# Shared variables
+dataSet = None
+userInput = None
 
-    # Create a frame for the data display
-    data_display = ttk.Frame(root, padding="10")
-    data_display.grid(row=0, column=0, sticky=(tk.W, tk.E))
+# Shared DOM Element IDs
+displayArea = None
 
-    # Create a frame for the input field
-    input_field = ttk.Frame(root, padding="10")
-    input_field.grid(row=1, column=0, sticky=(tk.W, tk.E))
+def renderUI():
+    """
+    Function to render the user interface with usability in mind.
+    """
+    global displayArea
 
-    # Create a frame for the login button
-    login_button = ttk.Frame(root, padding="10")
-    login_button.grid(row=2, column=0, sticky=(tk.W, tk.E))
+    # Create the main window
+    window = tk.Tk()
+    window.title("Scientific Data Analysis App")
 
-    # Create a frame for the encryption toggle
-    encryption_toggle = ttk.Frame(root, padding="10")
-    encryption_toggle.grid(row=3, column=0, sticky=(tk.W, tk.E))
+    # Create a canvas for the display area
+    displayArea = tk.Canvas(window, width=800, height=600)
+    displayArea.pack()
 
-    # Create a text widget for displaying data
-    data_text = tk.Text(data_display, width=50, height=10)
-    data_text.pack()
+    # Create a label for user instructions
+    instructionLabel = tk.Label(window, text="Please input your data for analysis:")
+    instructionLabel.pack()
 
-    # Create an entry widget for user input
-    user_entry = ttk.Entry(input_field, width=50)
-    user_entry.pack()
+    # Create a text box for user input
+    global userInput
+    userInput = tk.Entry(window)
+    userInput.pack()
 
-    # Create a button for user login
-    login_btn = ttk.Button(login_button, text="Login")
-    login_btn.pack()
+    # Create a button to submit the data
+    submitButton = tk.Button(window, text="Submit", command=processData)
+    submitButton.pack()
 
-    # Create a checkbutton for encryption toggle
-    encryption_check = ttk.Checkbutton(encryption_toggle, text="Enable Encryption")
-    encryption_check.pack()
+    # Run the application
+    window.mainloop()
 
-    root.mainloop()
+def processData():
+    """
+    Function to process the user input data.
+    """
+    global dataSet
+    global userInput
 
+    # Get the user input
+    dataSet = userInput.get()
+
+    # Clear the input field
+    userInput.delete(0, tk.END)
+
+    # Display the processed data
+    displayData()
+
+def displayData():
+    """
+    Function to display the processed data.
+    """
+    global displayArea
+    global dataSet
+
+    # Clear the display area
+    displayArea.delete("all")
+
+    # Display the data
+    displayArea.create_text(400, 300, text=dataSet)
+
+# Run the application
 if __name__ == "__main__":
-    create_interface()
+    renderUI()
