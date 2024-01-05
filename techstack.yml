@@ -1,7 +1,8 @@
 repo_name: Or4cl3AI/SciTouchAI
 report_id: cd2b42538b88dcb30c60da7b8193c11f
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-24T01:56:09+00:00'
+timestamp: '2024-01-05T08:34:25+00:00'
 requested_by: Or4cl3AI
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI
   detection_source: Repo Metadata
 - name: FastAPI
   description: A high performance, easy to learn, fast to code, ready for production
@@ -27,6 +29,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Microframeworks (Backend)
   image_url: https://img.stackshare.io/service/25014/default_f6ff39141b468e832d1bc59fc98a060df604d44d.png
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:48:21.000000000 Z
@@ -38,7 +41,8 @@ tools:
   category: Libraries
   sub_category: Charting Libraries
   image_url: https://img.stackshare.io/service/2993/2DZC4KaA_400x400.jpg
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: SQLAlchemy
@@ -51,7 +55,7 @@ tools:
   category: Data Stores
   sub_category: Object Relational Mapper (ORM)
   image_url: https://img.stackshare.io/service/1839/q5uAkmy7.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -63,6 +67,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI
   detection_source: Repo Metadata
 - name: PyPI
   description: A repository of software for the Python programming language
@@ -72,6 +77,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Hosted Package Repository
   image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:48:21.000000000 Z
@@ -85,7 +91,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Code Review
   image_url: https://img.stackshare.io/service/4837/py.jpg
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -99,7 +105,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Machine Learning Tools
   image_url: https://img.stackshare.io/service/9899/xgboost400.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -113,7 +119,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/4586/Lu99Qe0Z_400x400.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -125,6 +131,7 @@ tools:
   category: Assets and Media
   sub_category: Image Processing and Management
   image_url: https://img.stackshare.io/service/1293/opencv-logo-64x64.png
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -138,8 +145,8 @@ tools:
   category: Libraries
   sub_category: Data Science Tools
   image_url: https://img.stackshare.io/service/2179/default_332f874a2edb2686f578aa6389313efcea1eec41.png
-  detection_source_url: docs/requirements.txt
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: SciPy
@@ -152,7 +159,7 @@ tools:
   category: Libraries
   sub_category: Data Science Tools
   image_url: https://img.stackshare.io/service/3303/scipyshiny_small.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -166,13 +173,13 @@ tools:
   category: Application Utilities
   sub_category: Machine Learning Tools
   image_url: https://img.stackshare.io/service/4717/FtFnqC38_400x400.png
-  detection_source_url: docs/requirements.txt
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: bcrypt
   description: Modern password hashing for your software and your servers
-  package_url: https://pypi.org/bcrypt
+  package_url: https://pypi.org/project/bcrypt
   version: 3.2.0
   license: Apache-2.0
   open_source: true
@@ -180,13 +187,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20031/default_242158225818ea25f0ab9031a46e17f8ff8246cb.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: beautifulsoup4
   description: Screen-scraping library
-  package_url: https://pypi.org/beautifulsoup4
+  package_url: https://pypi.org/project/beautifulsoup4
   version: 4.10.0
   license: MIT
   open_source: true
@@ -194,25 +201,26 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19838/default_85689b353a3a9409328e253ea28d859d29151e0c.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: black
   description: The uncompromising code formatter
-  package_url: https://pypi.org/black
+  package_url: https://pypi.org/project/black
   license: MIT
   open_source: true
   hosted_saas: false
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20099/default_029b9bbfb6be2cd34bebeda5b8e1e80a1d22441c.png
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: bokeh
   description: Interactive plots and applications in the browser from Python
-  package_url: https://pypi.org/bokeh
+  package_url: https://pypi.org/project/bokeh
   version: 2.4.0
   license: BSD-3-Clause
   open_source: true
@@ -220,14 +228,14 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20175/default_b59452f5365a0e677c38da18021b9d6569ac0da7.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: cryptography
   description: Cryptography is a package which provides cryptographic recipes and
     primitives to Python developers
-  package_url: https://pypi.org/cryptography
+  package_url: https://pypi.org/project/cryptography
   version: 3.4.8
   license: BSD-3-Clause,Apache-2.0
   open_source: true
@@ -235,7 +243,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19850/default_db2ab2702f70e20c272f6ce65251108fb2b8f1ea.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -253,12 +261,12 @@ tools:
     detected_date: Feb 8
     severity: moderate
     first_patched: 39.0.1
-  - name: Vulnerable OpenSSL included in cryptography wheels
-    cve_id: 
-    cve_url: https://github.com/advisories/GHSA-5cpq-8wj7-hf2v
-    detected_date: Jun 3
-    severity: low
-    first_patched: 41.0.0
+  - name: cryptography vulnerable to NULL-dereference when loading PKCS7 certificates
+    cve_id: CVE-2023-49083
+    cve_url: https://github.com/advisories/GHSA-jfhm-5ghh-2f97
+    detected_date: Nov 29
+    severity: moderate
+    first_patched: 41.0.6
   - name: pyca/cryptography's wheels include vulnerable OpenSSL
     cve_id: 
     cve_url: https://github.com/advisories/GHSA-jm77-qphf-c4w8
@@ -271,9 +279,15 @@ tools:
     detected_date: Sep 22
     severity: low
     first_patched: 41.0.4
+  - name: Vulnerable OpenSSL included in cryptography wheels
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-5cpq-8wj7-hf2v
+    detected_date: Jun 3
+    severity: low
+    first_patched: 41.0.0
 - name: dask
   description: Parallel PyData with Task Scheduling
-  package_url: https://pypi.org/dask
+  package_url: https://pypi.org/project/dask
   version: 2021.9.1
   license: BSD-3-Clause
   open_source: true
@@ -281,7 +295,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20131/default_3146a05cf4dd77d8b50cff25709373c081ac5053.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
@@ -294,7 +308,7 @@ tools:
     first_patched: 2021.10.0
 - name: docker
   description: A Python library for the Docker Engine API
-  package_url: https://pypi.org/docker
+  package_url: https://pypi.org/project/docker
   version: 5.0.2
   license: Apache-2.0
   open_source: true
@@ -302,13 +316,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19882/default_3863c7bb51d307217c188e059f67ca417c51efe3.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: flake8
   description: 'The modular source code checker: pep8, pyflakes and co'
-  package_url: https://pypi.org/flake8
+  package_url: https://pypi.org/project/flake8
   version: 3.9.2
   license: MIT
   open_source: true
@@ -316,13 +330,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19920/default_c8be5290cb8d8a8b578535a2c6475d1057ff4ea4.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: gunicorn
   description: WSGI HTTP Server for UNIX
-  package_url: https://pypi.org/gunicorn
+  package_url: https://pypi.org/project/gunicorn
   version: 20.1.0
   license: MIT
   open_source: true
@@ -330,13 +344,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19931/default_74a0c20721d3a0a1484d69586401591fe8993db2.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: lightgbm
   description: LightGBM Python Package
-  package_url: https://pypi.org/lightgbm
+  package_url: https://pypi.org/project/lightgbm
   version: 3.2.1
   license: MIT
   open_source: true
@@ -344,13 +358,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: music21
   description: A Toolkit for Computer-Aided Musical Analysis
-  package_url: https://pypi.org/music21
+  package_url: https://pypi.org/project/music21
   version: 6.7.1
   license: BSD-3-Clause
   open_source: true
@@ -358,13 +372,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: newspaper3k
   description: Simplified python article discovery &amp; extraction
-  package_url: https://pypi.org/newspaper3k
+  package_url: https://pypi.org/project/newspaper3k
   version: 0.2.8
   license: MIT
   open_source: true
@@ -372,13 +386,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: nltk
   description: Natural Language Toolkit
-  package_url: https://pypi.org/nltk
+  package_url: https://pypi.org/project/nltk
   version: 3.6.2
   license: Apache-2.0
   open_source: true
@@ -386,8 +400,8 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20023/default_b0d1a54f127d7017fce41c15f5e85568fb7019ed.png
-  detection_source_url: docs/requirements.txt
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
   vulnerabilities:
@@ -411,7 +425,7 @@ tools:
     first_patched: 3.6.4
 - name: opencv-python
   description: Wrapper package for OpenCV python bindings
-  package_url: https://pypi.org/opencv-python
+  package_url: https://pypi.org/project/opencv-python
   version: 4.5.3
   license: MIT
   open_source: true
@@ -419,13 +433,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: pandas
   description: Powerful data structures for data analysis
-  package_url: https://pypi.org/pandas
+  package_url: https://pypi.org/project/pandas
   version: 1.3.3
   license: BSD-3-Clause
   open_source: true
@@ -433,13 +447,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19837/default_85689b353a3a9409328e253ea28d859d29151e0c.png
-  detection_source_url: docs/requirements.txt
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: passlib
   description: Comprehensive password hashing framework supporting over 30 schemes
-  package_url: https://pypi.org/passlib
+  package_url: https://pypi.org/project/passlib
   version: 1.7.4
   license: BSD-3-Clause
   open_source: true
@@ -447,13 +461,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19992/default_aa5b3e77340c2bb80cd8e6a59cd82909abcdcd63.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:48:21.000000000 Z
 - name: psycopg2-binary
   description: Psycopg2 - Python-PostgreSQL Database Adapter
-  package_url: https://pypi.org/psycopg2-binary
+  package_url: https://pypi.org/project/psycopg2-binary
   version: 2.9.1
   license: BSD-3-Clause-Attribution
   open_source: true
@@ -461,13 +475,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: pycrypto
   description: Cryptographic modules for Python
-  package_url: https://pypi.org/pycrypto
+  package_url: https://pypi.org/project/pycrypto
   version: 2.6.1
   license: Unlicense
   open_source: true
@@ -475,7 +489,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19985/default_ccb381b493daf0d966e015380e1894fdbc637ad3.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
@@ -494,7 +508,7 @@ tools:
     first_patched: 
 - name: pycryptodome
   description: Cryptographic library for Python
-  package_url: https://pypi.org/pycryptodome
+  package_url: https://pypi.org/project/pycryptodome
   version: 3.10.1
   license: BSD-3-Clause,Unlicense,Apache-2.0
   open_source: true
@@ -502,13 +516,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19900/default_4f4fb10b6f169603a907dcb35a5a356d784e3bd3.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: pydantic
   description: Data validation and settings management using python 3.6 type hinting
-  package_url: https://pypi.org/pydantic
+  package_url: https://pypi.org/project/pydantic
   version: 1.8.2
   license: MIT
   open_source: true
@@ -516,13 +530,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20022/default_b0d1a54f127d7017fce41c15f5e85568fb7019ed.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: python-dotenv
   description: Add .env support to your django/flask apps in development and deployments
-  package_url: https://pypi.org/python-dotenv
+  package_url: https://pypi.org/project/python-dotenv
   version: 0.19.1
   license: BSD-3-Clause
   open_source: true
@@ -530,13 +544,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20095/default_3141eabecdd8efa55de73a33c43f2ac0d5bbf954.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: python-jose
   description: JOSE implementation in Python
-  package_url: https://pypi.org/python-jose
+  package_url: https://pypi.org/project/python-jose
   version: 3.3.0
   license: MIT
   open_source: true
@@ -544,12 +558,12 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20096/default_5297f13e5d732665caff8f16d9bfcd71481f98b6.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: pytorch
-  package_url: https://pypi.org/pytorch
+  package_url: https://pypi.org/project/pytorch
   version: 1.9.1
   license: BSD-3-Clause
   open_source: true
@@ -557,13 +571,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: pyttsx3
   description: Text to Speech
-  package_url: https://pypi.org/pyttsx3
+  package_url: https://pypi.org/project/pyttsx3
   version: '2.90'
   license: MPL-2.0
   open_source: true
@@ -571,13 +585,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: requests
   description: Python HTTP for Humans
-  package_url: https://pypi.org/requests
+  package_url: https://pypi.org/project/requests
   version: 2.26.0
   license: Apache-2.0
   open_source: true
@@ -585,7 +599,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19826/default_d7c684bf2673f008a9f02ac93901229297a22d7e.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
@@ -598,7 +612,7 @@ tools:
     first_patched: 2.31.0
 - name: scikit-learn
   description: A set of python modules for machine learning and data mining
-  package_url: https://pypi.org/scikit-learn
+  package_url: https://pypi.org/project/scikit-learn
   version: 0.24.2
   license: BSD-3-Clause
   open_source: true
@@ -606,13 +620,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19898/default_4343f8bba4f6051641ffca8b4fbe9b099402c84d.png
-  detection_source_url: docs/requirements.txt
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: seaborn
   description: 'Seaborn: statistical data visualization'
-  package_url: https://pypi.org/seaborn
+  package_url: https://pypi.org/project/seaborn
   version: 0.11.2
   license: BSD-1-Clause
   open_source: true
@@ -620,13 +634,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/pypi/image.png
-  detection_source_url: docs/requirements.txt
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
+  detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: spacy
   description: Industrial-strength Natural Language Processing
-  package_url: https://pypi.org/spacy
+  package_url: https://pypi.org/project/spacy
   version: 3.1.3
   license: MIT
   open_source: true
@@ -634,13 +648,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20263/default_1842575018db691e6f93d8a9a1aa65cdc2a55c20.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
 - name: uvicorn
   description: The lightning-fast ASGI server
-  package_url: https://pypi.org/uvicorn
+  package_url: https://pypi.org/project/uvicorn
   version: 0.15.0
   license: BSD-3-Clause
   open_source: true
@@ -648,13 +662,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20431/default_f824837db22536768ec317b67275fa384fad7d47.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:52:29.000000000 Z
 - name: virtualenv
   description: Virtual Python Environment builder
-  package_url: https://pypi.org/virtualenv
+  package_url: https://pypi.org/project/virtualenv
   version: 20.8.1
   license: MIT
   open_source: true
@@ -662,7 +676,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19970/default_1c8812e05cf754e8f654b8d86b3f025827f5bfb6.png
-  detection_source_url: docs/requirements.txt
+  detection_source_url: https://github.com/Or4cl3AI/SciTouchAI/blob/main/docs/requirements.txt
   detection_source: docs/requirements.txt
   last_updated_by: e2b-for-github[bot]
   last_updated_on: 2023-07-30 04:36:17.000000000 Z
